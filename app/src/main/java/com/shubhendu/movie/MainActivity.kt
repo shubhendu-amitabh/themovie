@@ -2,7 +2,8 @@ package com.shubhendu.movie
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.shubhendu.movie.ui.main.MainFragment
+import com.shubhendu.movie.ui.movie.detail.MovieDetailsFragment
+import com.shubhendu.movie.ui.movie.list.MovieListFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -10,9 +11,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
         if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.container, MainFragment.newInstance())
-                .commitNow()
+            displayMovieListFragment()
         }
+    }
+
+    fun displayMovieListFragment(){
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.container, MovieListFragment.newInstance())
+            .commitNow()
+    }
+
+    fun displayMovieDetailsFragment(){
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.container, MovieDetailsFragment.newInstance())
+            .commitNow()
     }
 }
