@@ -24,6 +24,7 @@ class Constants {
     }
 
     object RequestURLEndPoints {
+        const val IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500/"
         const val BASE_URL = "https://api.themoviedb.org/3/movie/"
         const val TOP_RATED_URL = "top_rated"
         const val RECOMMENDATIONS_URL = "{movieId}/recommendations"
