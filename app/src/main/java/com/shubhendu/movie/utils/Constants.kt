@@ -24,10 +24,10 @@ class Constants {
     }
 
     object RequestURLEndPoints {
-        const val BASE_URL = "https://api.themoviedb.org/3/movie"
-        const val TOP_RATED_URL = "/top_rated"
-        const val RECOMMENDATIONS_URL = "/recommendations"
-        const val MOVIE_ID_URL = "/{movieId}"
+        const val BASE_URL = "https://api.themoviedb.org/3/movie/"
+        const val TOP_RATED_URL = "top_rated"
+        const val RECOMMENDATIONS_URL = "{movieId}/recommendations"
+        const val MOVIE_ID_URL = "{movieId}"
     }
 
     // Movie list

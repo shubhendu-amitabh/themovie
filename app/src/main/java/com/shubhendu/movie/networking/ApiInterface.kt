@@ -1,7 +1,7 @@
 package com.shubhendu.movie.networking
 
-import com.shubhendu.movie.ui.movie.detail.MovieDetails
-import com.shubhendu.movie.ui.movie.list.Movie
+import com.shubhendu.movie.ui.movie.detail.model.MovieDetails
+import com.shubhendu.movie.ui.movie.list.model.MovieListResponse
 import com.shubhendu.movie.utils.Constants.RequestParams.KEY
 import com.shubhendu.movie.utils.Constants.RequestParams.LANGUAGE_KEY
 import com.shubhendu.movie.utils.Constants.RequestParams.MOVIE_ID_KEY
@@ -24,11 +24,11 @@ interface ApiInterface {
     fun getMovies(@Query(KEY) apiKey:String,
                   @Query(LANGUAGE_KEY) language:String,
                   @Query(PAGE_KEY) page:String,
-                  ) : Call<List<Movie>>
+                  ) : Call<MovieListResponse>
 
     // Get movie details
     @GET(MOVIE_ID_URL)
-    fun getMovieDetails(@Path(MOVIE_ID_KEY)  userId:String,
+    fun getMovieDetails(@Path(MOVIE_ID_KEY)  movieId:Int,
                         @Query(KEY) apiKey:String,
                         @Query(LANGUAGE_KEY) language:String,
                         @Query(PAGE_KEY) page:String,
@@ -36,10 +36,11 @@ interface ApiInterface {
 
     // Get movie recommendations
     @GET(RECOMMENDATIONS_URL)
-    fun getMovieRecommendations(@Query(KEY) apiKey:String,
-                        @Query(LANGUAGE_KEY) language:String,
-                        @Query(PAGE_KEY) page:String,
-    ) : Call<MovieDetails>
+    fun getMovieRecommendations(@Path(MOVIE_ID_KEY)  movieId:Int,
+                                @Query(KEY) apiKey:String,
+                                @Query(LANGUAGE_KEY) language:String,
+                                @Query(PAGE_KEY) page:String,
+    ) : Call<MovieListResponse>
 
     companion object {
 

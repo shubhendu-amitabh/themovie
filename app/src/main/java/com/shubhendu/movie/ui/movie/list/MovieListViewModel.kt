@@ -3,10 +3,11 @@ package com.shubhendu.movie.ui.movie.list
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.shubhendu.movie.ui.movie.list.model.Movie
 
 class MovieListViewModel : ViewModel() {
 
-    var movies = MutableLiveData<List<Movie>>()
+    private var movies = MutableLiveData<List<Movie>>()
     var error: LiveData<String>
     var showLoader: LiveData<Boolean>
 
@@ -18,7 +19,8 @@ class MovieListViewModel : ViewModel() {
         this.showLoader  = movieListRepository.showLoader
     }
 
-    fun getMovieList(){
-        movieListRepository.getMovieList()
+    fun getMovieList(): MutableLiveData<List<Movie>> {
+        movies = movieListRepository.getMovieList()
+        return movies
     }
 }

@@ -7,9 +7,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import com.shubhendu.movie.R
+import com.shubhendu.movie.ui.movie.list.model.Movie
 
 class MovieListFragment : Fragment() {
+
+    var movies:List<Movie>? = null
 
     companion object {
         fun newInstance() = MovieListFragment()
@@ -26,13 +30,14 @@ class MovieListFragment : Fragment() {
         return rootView
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(MovieListViewModel::class.java)
+        viewModel.getMovieList().observe(viewLifecycleOwner, Observer {
+            if (it != null) {
+                movies = it
+            } else {
+            }
+        })
     }
-
-    override fun onDetach() {
-        super.onDetach()
-    }
-
 }
