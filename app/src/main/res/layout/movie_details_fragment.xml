@@ -11,19 +11,84 @@
         android:id="@+id/movieTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello"
+        android:text=""
         android:textStyle="bold"
         android:gravity="center"
         android:textSize="20dp"
         />
 
-    <ImageView
+    <ScrollView
         android:layout_below="@+id/movieTitle"
-        android:id="@+id/posterImage"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_above="@+id/recycler"
-        />
+        android:scrollbars="vertical"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="10dp"
+            >
+        <ImageView
+            android:id="@+id/posterImage"
+            android:layout_width="match_parent"
+            android:layout_height="600dp"
+            android:src="@drawable/movie_placeholder"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginTop="10dp"
+            >
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Release Date:"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:id="@+id/releaseDate"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="NA"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginBottom="30dp"
+            >
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Popularity:"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:id="@+id/popularity"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="NA"
+                />
+        </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"

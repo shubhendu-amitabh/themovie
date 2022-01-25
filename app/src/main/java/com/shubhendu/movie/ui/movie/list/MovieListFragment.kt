@@ -26,7 +26,6 @@ class MovieListFragment : Fragment() {
         fun newInstance() = MovieListFragment()
     }
 
-
     lateinit var searchView: SearchView
     lateinit var rvMovies: RecyclerView
     lateinit var rootView: View

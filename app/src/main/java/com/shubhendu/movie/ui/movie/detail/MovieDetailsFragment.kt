@@ -33,6 +33,9 @@ class MovieDetailsFragment : Fragment() {
 
     lateinit var recommendationRecycler: RecyclerView
 
+    lateinit var popularityTextView: TextView
+    lateinit var releaseDateTextView: TextView
+
     lateinit var titleTextView: TextView
     lateinit var imageView: ImageView
     lateinit var rootView: View
@@ -43,6 +46,10 @@ class MovieDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         rootView = inflater.inflate(R.layout.movie_details_fragment, container, false)
+
+        popularityTextView = rootView.findViewById<TextView>(R.id.popularity)
+        releaseDateTextView = rootView.findViewById<TextView>(R.id.releaseDate)
+
         titleTextView = rootView.findViewById<View>(R.id.movieTitle) as TextView
         imageView = rootView.findViewById<View>(R.id.posterImage) as ImageView
         recommendationRecycler = rootView.findViewById<RecyclerView>(R.id.recycler)
@@ -59,6 +66,9 @@ class MovieDetailsFragment : Fragment() {
             if (it != null) {
                 movieDetails = it
                 titleTextView.text = movieDetails?.title
+                popularityTextView.text = movieDetails!!.popularity.toString()
+                releaseDateTextView.text = movieDetails!!.release_date
+
                 activity?.let { it1 ->
                     Glide.with(it1)
                         .load(Constants.RequestURLEndPoints.IMAGE_BASE_URL + movieDetails?.poster_path)
