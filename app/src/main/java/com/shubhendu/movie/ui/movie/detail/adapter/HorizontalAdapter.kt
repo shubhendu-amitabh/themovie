@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.shubhendu.movie.MainActivity
 import com.shubhendu.movie.R
 import com.shubhendu.movie.ui.movie.list.model.Movie
 import com.shubhendu.movie.utils.Constants
@@ -37,6 +38,11 @@ class HorizontalAdapter(context: Context, val movies:List<Movie>) :
 
     override fun onBindViewHolder(holder: MyView, position: Int) {
         val movie = movies[position]
+
+        holder.itemView.setOnClickListener(View.OnClickListener {
+            (context as MainActivity).displayMovieDetailsFragment(movie.id)
+        })
+
         context?.let {
             Glide.with(it)
                 .load(Constants.RequestURLEndPoints.IMAGE_BASE_URL +movie.poster_path)

@@ -25,6 +25,7 @@ class MovieDetailsFragment : Fragment() {
 
     var recommendedMovies:List<Movie>? = null
     var movieDetails:MovieDetails? = null
+    var movieID = 11854
 
     companion object {
         fun newInstance() = MovieDetailsFragment()
@@ -46,13 +47,15 @@ class MovieDetailsFragment : Fragment() {
         imageView = rootView.findViewById<View>(R.id.posterImage) as ImageView
         recommendationRecycler = rootView.findViewById<RecyclerView>(R.id.recycler)
         recommendationRecycler.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+
+        movieID = arguments?.get(Constants.RequestParams.MOVIE_ID_KEY) as Int
         return rootView
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(MovieDetailsViewModel::class.java)
-        viewModel.getMovieDetails(11854).observe(viewLifecycleOwner, Observer {
+        viewModel.getMovieDetails(movieID).observe(viewLifecycleOwner, Observer {
             if (it != null) {
                 movieDetails = it
                 titleTextView.text = movieDetails?.title
@@ -66,7 +69,7 @@ class MovieDetailsFragment : Fragment() {
             }
         })
 
-        viewModel.getMovieRecommendations(11854).observe(viewLifecycleOwner, Observer {
+        viewModel.getMovieRecommendations(movieID).observe(viewLifecycleOwner, Observer {
             if (it != null) {
                 recommendedMovies = it
                 recommendationRecycler.adapter =

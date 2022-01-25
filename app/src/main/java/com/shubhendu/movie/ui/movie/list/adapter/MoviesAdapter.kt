@@ -22,6 +22,8 @@ class MoviesAdapter (context: Context,
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val titleTextView: TextView = itemView.findViewById<TextView>(R.id.movieTitle)
         val movieImageView = itemView.findViewById<ImageView>(R.id.movieImage)
+        val popularityTextView = itemView.findViewById<TextView>(R.id.popularity)
+        val releaseDateTextView = itemView.findViewById<TextView>(R.id.releaseDate)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesAdapter.ViewHolder {
@@ -34,9 +36,11 @@ class MoviesAdapter (context: Context,
     override fun onBindViewHolder(viewHolder: MoviesAdapter.ViewHolder, position: Int) {
         val movie: Movie = movies[position]
         viewHolder.titleTextView.text = movie.title
+        viewHolder.popularityTextView.text = movie.popularity.toString()
+        viewHolder.releaseDateTextView.text = movie.release_date
 
         viewHolder.itemView.setOnClickListener(View.OnClickListener {
-            (context as MainActivity).displayMovieDetailsFragment()
+            (context as MainActivity).displayMovieDetailsFragment(movie.id)
         })
 
         context?.let {

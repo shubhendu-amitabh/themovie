@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.shubhendu.movie.ui.movie.detail.MovieDetailsFragment
 import com.shubhendu.movie.ui.movie.list.MovieListFragment
+import com.shubhendu.movie.utils.Constants.RequestParams.MOVIE_ID_KEY
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,9 +25,14 @@ class MainActivity : AppCompatActivity() {
         currentFragment = "LIST_FRAGMENT"
     }
 
-    fun displayMovieDetailsFragment(){
+    fun displayMovieDetailsFragment(movieId:Int){
+
+        var movieDetailsFragment = MovieDetailsFragment.newInstance()
+        val arguments = Bundle()
+        arguments.putInt(MOVIE_ID_KEY, movieId)
+        movieDetailsFragment.setArguments(arguments)
         supportFragmentManager.beginTransaction()
-            .replace(R.id.container, MovieDetailsFragment.newInstance())
+            .replace(R.id.container, movieDetailsFragment)
             .commitNow()
         currentFragment = "DETAILS_FRAGMENT"
     }

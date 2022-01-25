@@ -22,13 +22,60 @@
         android:orientation="vertical"
         android:layout_alignParentRight="true"
         android:padding="10dp"
+        android:gravity="center"
         >
         <TextView
             android:id="@+id/movieTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textStyle="bold"
+            android:textSize="20dp"
             />
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            >
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Release Date:"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:id="@+id/releaseDate"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="NA"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            >
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Popularity:"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:id="@+id/popularity"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="NA"
+                />
+        </LinearLayout>
 
     </LinearLayout>
 </RelativeLayout>
